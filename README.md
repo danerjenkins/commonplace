@@ -48,13 +48,14 @@ Questions + predictions only — no findings yet.
 
 **Stay on mission / nav back everywhere?** Yes — Book Detail has an explicit back-link plus the nav bar; For You has the nav bar. No screen adds unrelated content (no settings, accounts, upsells).
 
-**Before / after (concrete revision):** Trying to be more compact, an early pass packed shelves into a 3-column grid with ~2px gaps, an abstract "44/12" stat tile instead of a real example, a subhead restating the headline, and a status pill on every card repeating its own shelf's label. Nothing signaled what mattered — everything competed equally. Rebuilt as single-column shelves with a real spacing scale, one featured book as the focal point, and the redundant subhead/pills removed.
+**Before / after (concrete revision):** Trying to make Home less sparse, an early pass packed shelves into a 3-column grid with ~2px gaps between them. That was the opposite failure — proximity broke down because *everything* was close together, so six distinct shelves read as one dense block with no dominant element. Called out directly as "spacing mashed together... no visual signal of what is most important... poor use of whitespace." Rebuilt with a real spacing scale (tight label-to-row, generous gap between shelves) and one dominant focal point — a single featured "Continue reading" card — instead of a same-weight stat tile competing with it.
 
-**What the AI got wrong/oversimplified, and the fix:**
-- Gradient placeholder covers → real cover art from Supabase (Open Library for the few not yet owned).
-- A small hand-picked ~17-book set → real `most_wanted`/ownership/finished data (also fixed miscategorized books, e.g. *Six of Crows* was marked "want to read" but is actually owned and finished).
-- Native scrollbar under shelf rows clashed with the rest of the design → custom arrow buttons.
-- "Book" sat in top nav despite being a drill-down, not a destination → removed; reachable only by clicking a cover.
+**Revision log — what was flagged, and the fix:**
+- *"Populate more books, use the tbr lists from Supabase"* → library grew from ~17 hand-picked titles to 44, driven by the real `most_wanted`, ownership, and finished fields (this also caught miscategorized data, e.g. *Six of Crows* had been marked "want to read" but is actually owned and finished).
+- *"Too much telling... less words, more thoughtful design details"* → cut the subhead paragraph that just restated the headline, and the status pill repeated on every card even though its own shelf header already says the same thing (an "Owned" shelf where every card was also individually labeled "OWNED"). Status is now communicated once, by grouping, not per-card text.
+- *"The scroll bar doesn't mesh with the design... maybe just an arrow on the side"* → the native browser scrollbar was the one un-styled, generic element in an otherwise custom system. Replaced with small circular arrow buttons in the site's own palette that fade out when a shelf doesn't overflow.
+- *"'Your Library' is too close to the nav bar"* → the gap between the sticky nav and page content was increased twice (52px, then 72px) until it read as intentional breathing room rather than a layout accident.
+- *"Remove Book from the nav bar, only reachable by clicking the image"* → Book Detail is a drill-down from a specific cover, not something a user chooses to navigate to directly, so keeping it as a top-level tab misrepresented the app's own structure. Removed; nav now only lists real top-level destinations (Library, For You).
 
 ## Running locally
 
