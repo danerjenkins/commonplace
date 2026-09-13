@@ -111,7 +111,7 @@
   .navpill[aria-current="true"]{background:var(--brass); color:#241906;}
   .navpill:not([aria-current="true"]):hover{color:var(--ink); background:var(--line);}
 
-  main{padding-block:32px 56px;}
+  main{padding-block:52px 56px;}
   .screen{animation:rise .3s ease both;}
   @keyframes rise{from{opacity:0; transform:translateY(5px);} to{opacity:1; transform:translateY(0);}}
   @media (prefers-reduced-motion:reduce){ .screen{animation:none;} }
@@ -124,7 +124,6 @@
   .hero-text{flex:1 1 340px; min-width:280px;}
   .hero-kicker{color:var(--moss); font-weight:700; margin-bottom:8px; display:block;}
   .hero h1{font-size:clamp(26px,3.4vw,38px); font-weight:500; max-width:20ch; line-height:1.16;}
-  .hero-sub{color:var(--ink-soft); font-size:14.5px; margin-top:10px; max-width:46ch; line-height:1.5;}
 
   .hero-featured{
     flex:0 1 420px; display:flex; align-items:center; gap:16px; text-align:left;
@@ -149,9 +148,25 @@
   }
   .shelf-head .eyebrow{color:var(--moss); font-weight:600;}
   .shelf-head .count{color:var(--ink-faint); font-size:11.5px; font-family:"IBM Plex Mono",monospace;}
+  .shelf-row-wrap{position:relative;}
   .shelf-row{
-    display:flex; gap:14px; overflow-x:auto; padding-bottom:6px; scrollbar-width:thin;
+    display:flex; gap:14px; overflow-x:auto; padding-bottom:2px;
+    scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:smooth;
   }
+  .shelf-row::-webkit-scrollbar{display:none;}
+  .shelf-nav{
+    position:absolute; top:50%; translate:0 -50%; z-index:2;
+    width:32px; height:32px; border-radius:50%; border:1px solid var(--line);
+    background:var(--paper-raised); color:var(--ink); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; box-shadow:0 6px 14px -6px var(--shadow); font-size:15px; line-height:1;
+    transition:opacity .15s ease, transform .12s ease;
+  }
+  .shelf-nav:hover{transform:translate(0,-50%) scale(1.06);}
+  .shelf-nav:active{transform:translate(0,-50%) scale(.96);}
+  .shelf-nav.prev{left:-14px;}
+  .shelf-nav.next{right:-14px;}
+  .shelf-nav[disabled]{opacity:0; pointer-events:none;}
+  @media (max-width:640px){ .shelf-nav{display:none;} }
 
   .card{
     flex:0 0 auto; width:118px; cursor:pointer; border:none; background:none; padding:0; text-align:left;
@@ -165,12 +180,6 @@
   }
   .cover img{width:100%; height:100%; object-fit:cover; display:block;}
   .card:hover .cover{transform:translateY(-2px);}
-  .pill{
-    position:absolute; top:7px; right:7px; z-index:1;
-    font-family:"IBM Plex Mono",monospace; font-size:8.5px; letter-spacing:.05em; text-transform:uppercase;
-    background:rgba(18,16,12,.62); color:#F6F1E6; padding:3px 6px; border-radius:999px;
-    backdrop-filter:blur(2px);
-  }
   .card .meta{font-size:11.5px; color:var(--ink-soft); line-height:1.3;}
   .card .meta b{color:var(--ink); font-weight:600; display:block; font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .progress-track{height:3px; border-radius:2px; background:var(--line); overflow:hidden; margin-top:3px;}
@@ -699,12 +708,11 @@
   }
 
   function bookCard(b){
-    var pillHtml = b.status==="reading" ? '<div class="pill">'+b.progress+'% read</div>' : '<div class="pill">'+statusLabel(b.status)+'</div>';
-    var progressHtml = b.status==="reading" || b.status==="borrowed"
+    var progressHtml = b.status==="borrowed"
       ? '<div class="progress-track"><div class="progress-fill" style="width:'+b.progress+'%"></div></div>' : '';
     return (
       '<button class="card" data-open="'+b.id+'">'+
-        '<div class="cover">'+ pillHtml + coverImg(b.cover,b.title,b.author) +'</div>'+
+        '<div class="cover">'+ coverImg(b.cover,b.title,b.author) +'</div>'+
         '<div class="meta"><b>'+b.title+'</b>'+b.author+progressHtml+'</div>'+
       '</button>'
     );
@@ -715,9 +723,31 @@
     return (
       '<section class="shelf">'+
         '<div class="shelf-head"><span class="eyebrow">'+labelText+'</span><span class="count">'+count+'</span></div>'+
-        '<div class="shelf-row">'+ booksArr.map(bookCard).join("") +'</div>'+
+        '<div class="shelf-row-wrap">'+
+          '<button class="shelf-nav prev" aria-label="Scroll left" disabled>&#8249;</button>'+
+          '<div class="shelf-row">'+ booksArr.map(bookCard).join("") +'</div>'+
+          '<button class="shelf-nav next" aria-label="Scroll right">&#8250;</button>'+
+        '</div>'+
       '</section>'
     );
+  }
+
+  function wireShelfNav(){
+    document.querySelectorAll(".shelf-row-wrap").forEach(function(wrap){
+      var row = wrap.querySelector(".shelf-row");
+      var prev = wrap.querySelector(".shelf-nav.prev");
+      var next = wrap.querySelector(".shelf-nav.next");
+      if(!row || !prev || !next) return;
+      if(row.scrollWidth <= row.clientWidth + 2){ prev.style.display="none"; next.style.display="none"; return; }
+      function update(){
+        prev.disabled = row.scrollLeft <= 2;
+        next.disabled = row.scrollLeft >= row.scrollWidth - row.clientWidth - 2;
+      }
+      prev.addEventListener("click", function(){ row.scrollBy({left:-260, behavior:"smooth"}); });
+      next.addEventListener("click", function(){ row.scrollBy({left:260, behavior:"smooth"}); });
+      row.addEventListener("scroll", update);
+      update();
+    });
   }
 
   function renderHome(){
@@ -740,7 +770,6 @@
           '<div class="hero-text">'+
             '<span class="eyebrow hero-kicker">Your Library</span>'+
             '<h1>Your entire reading life, organized around you.</h1>'+
-            '<p class="hero-sub">Every book you own, borrow, want, or are reading — one shelf, not six apps.</p>'+
           '</div>'+
           featured+
         '</div>'+
@@ -911,6 +940,7 @@
     if(state.screen==="home") app.innerHTML = renderHome();
     else if(state.screen==="book") app.innerHTML = renderBook();
     else app.innerHTML = renderRec();
+    if(state.screen==="home") wireShelfNav();
     if(state.editingReview){
       var ta = document.getElementById("review-input");
       if(ta){ ta.focus(); ta.selectionStart = ta.value.length; }
