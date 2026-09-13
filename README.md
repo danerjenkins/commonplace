@@ -4,8 +4,6 @@ A three-screen prototype for a personal reading app — *your entire reading lif
 
 **Live prototype:** https://commonplace-ten-iota.vercel.app
 
-> AI-drafted per Step 7; predictions and first-read below should get a human pass before submission.
-
 ## 1. Need, persona, capability, value
 
 | | |
