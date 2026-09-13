@@ -111,26 +111,27 @@
   .navpill[aria-current="true"]{background:var(--brass); color:#241906;}
   .navpill:not([aria-current="true"]):hover{color:var(--ink); background:var(--line);}
 
-  main{padding-block:22px 48px;}
+  main{padding-block:14px 40px;}
   .screen{animation:rise .3s ease both;}
   @keyframes rise{from{opacity:0; transform:translateY(5px);} to{opacity:1; transform:translateY(0);}}
   @media (prefers-reduced-motion:reduce){ .screen{animation:none;} }
 
   /* ---------- home ---------- */
   .hero{
-    display:flex; justify-content:space-between; align-items:center; gap:20px;
-    flex-wrap:wrap; margin-bottom:22px;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px;
+    flex-wrap:wrap; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--line);
   }
-  .hero h1{font-size:clamp(21px,3vw,28px); font-weight:500; max-width:560px; line-height:1.18;}
-  .hero p{color:var(--ink-soft); font-size:13.5px; max-width:440px; margin-top:5px; line-height:1.45;}
-  .hero-stats{display:flex; gap:22px;}
+  .hero-kicker{color:var(--moss); font-weight:700; margin-bottom:3px; display:block;}
+  .hero h1{font-size:clamp(17px,2.1vw,21px); font-weight:500; max-width:620px; line-height:1.28;}
+  .hero-stats{display:flex; gap:20px;}
   .stat{text-align:right;}
-  .stat b{display:block; font-family:"Fraunces",serif; font-size:20px; font-weight:600; line-height:1.1;}
+  .stat b{display:block; font-family:"Fraunces",serif; font-size:19px; font-weight:600; line-height:1.1;}
   .stat span{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-faint);}
 
-  .shelves{display:grid; grid-template-columns:1fr 1fr; gap:4px 28px;}
-  @media (max-width:820px){ .shelves{grid-template-columns:1fr;} }
-  .shelf{margin-bottom:18px; min-width:0;}
+  .shelves{display:grid; grid-template-columns:1fr; gap:2px 24px;}
+  @media (min-width:700px){ .shelves{grid-template-columns:1fr 1fr;} }
+  @media (min-width:1100px){ .shelves{grid-template-columns:1fr 1fr 1fr;} }
+  .shelf{margin-bottom:14px; min-width:0;}
   .shelf-head{
     display:flex; align-items:baseline; gap:10px; margin-bottom:10px;
     border-bottom:1px solid var(--line); padding-bottom:6px;
@@ -309,30 +310,95 @@
       description:"In a vast Roman-inspired empire built on a hierarchy of ceded will, a hidden heir enrolls in the empire's most elite academy to uncover a conspiracy — and to survive the brutal system that keeps everyone below him in line.",
       status:"recommended", progress:0, myRating:0, myReview:"", addedNote:""
     },
+
+    /* ---- Up next: pulled straight from the real most_wanted / priority-TBR flag ---- */
     {
-      id:"the-name-of-the-wind", title:"The Name of the Wind", author:"Patrick Rothfuss",
-      cover:C+"the-name-of-the-wind.jpg",
-      series:"The Kingkiller Chronicle, Book 1", genre:"Fantasy", format:"Mass market paperback, wishlist",
-      pages:662, avgRating:4.6,
-      description:"The story of Kvothe, told by the man himself: an orphaned actor's son who became the most notorious wizard his world has ever seen, recounted from a quiet inn where he's hiding from his own legend.",
-      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Added to TBR Jan 2025"
+      id:"golden-son", title:"Golden Son", author:"Pierce Brown", cover:C+"golden-son.jpg",
+      series:"Red Rising Saga, Book 2", genre:"Science Fiction", format:"Mass market paperback, owned",
+      pages:464, avgRating:4.9,
+      description:"Embedded among the ruling Golds, Darrow wages a covert war to tear the Society apart from within, risking everything he's built to get close enough to strike.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
     },
     {
-      id:"six-of-crows", title:"Six of Crows", author:"Leigh Bardugo",
-      cover:C+"six-of-crows.jpg",
-      series:"Six of Crows, Book 1", genre:"Fantasy", format:"Mass market paperback, owned",
-      pages:465, avgRating:4.5,
-      description:"Six dangerous outcasts are offered a fortune to pull off a heist inside the most heavily fortified stronghold in the world. None of them expects to make it out alive — which is exactly why they're the only ones who might.",
-      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Added to TBR Feb 2025"
+      id:"morning-star", title:"Morning Star", author:"Pierce Brown", cover:C+"morning-star.jpg",
+      series:"Red Rising Saga, Book 3", genre:"Science Fiction", format:"Mass market paperback, owned",
+      pages:517, avgRating:4.8,
+      description:"With his cover blown and the rebellion in ruins, Darrow has to rebuild an alliance from nothing to finish the revolution he started.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
     },
     {
-      id:"babel", title:"Babel", author:"R. F. Kuang",
-      cover:C+"babel.jpg",
-      series:null, genre:"Historical Fiction", format:"Mass market paperback, wishlist",
-      pages:544, avgRating:4.5,
-      description:"An alternate 1830s Oxford where translation is the engine of empire, and a Chinese orphan raised to serve that engine has to decide whether he's a scholar of the institution — or a threat to it.",
-      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Added to TBR Jun 2025"
+      id:"iron-gold", title:"Iron Gold", author:"Pierce Brown", cover:C+"iron-gold.jpg",
+      series:"Red Rising Saga, Book 4", genre:"Science Fiction", format:"Mass market paperback, owned",
+      pages:620, avgRating:4.3,
+      description:"Ten years after his victory, Darrow finds the peace he won is fraying — told through new voices who see him as either liberator or tyrant.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
     },
+    {
+      id:"dark-age", title:"Dark Age", author:"Pierce Brown", cover:C+"dark-age.jpg",
+      series:"Red Rising Saga, Book 5", genre:"Science Fiction", format:"Mass market paperback, owned",
+      pages:700, avgRating:4.4,
+      description:"Outlawed and hunted, Darrow cuts a bloody path back to the people he loves while the war fractures into chaos on every front.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"light-bringer", title:"Light Bringer", author:"Pierce Brown", cover:C+"light-bringer.jpg",
+      series:"Red Rising Saga, Book 6", genre:"Science Fiction", format:"Not yet purchased",
+      pages:672, avgRating:4.5,
+      description:"The war for Mars reaches its breaking point as Darrow makes one last desperate gamble to hold his fracturing alliance together.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"the-brothers-karamazov", title:"The Brothers Karamazov", author:"Fyodor Dostoevsky",
+      cover:C+"the-brothers-karamazov.jpg",
+      series:null, genre:"Classic", format:"Mass market paperback, owned",
+      pages:824, avgRating:4.5,
+      description:"Three brothers, one murdered father, and a sprawling argument about faith, doubt, and free will disguised as a murder mystery.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"the-garden-of-eden", title:"The Garden of Eden", author:"Ernest Hemingway", cover:C+"the-garden-of-eden.jpg",
+      series:null, genre:"Classic", format:"Mass market paperback, owned",
+      pages:272, avgRating:3.7,
+      description:"A young writer's marriage unravels on the French Riviera as his wife pushes the boundaries of identity and desire further than he can follow.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"the-secret-history", title:"The Secret History", author:"Donna Tartt", cover:C+"the-secret-history.jpg",
+      series:null, genre:"Literary Fiction", format:"Not yet purchased",
+      pages:559, avgRating:4.2,
+      description:"A close-knit group of classics students at a New England college commit a murder, and the novel unwinds backward through the guilt that follows.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"the-song-of-achilles", title:"The Song of Achilles", author:"Madeline Miller", cover:C+"the-song-of-achilles.jpg",
+      series:null, genre:"Historical Fiction", format:"Not yet purchased",
+      pages:370, avgRating:4.6,
+      description:"Patroclus, an exiled prince, becomes the closest companion of the god-touched Achilles, and follows him toward the fate the prophecies always promised.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"brave-new-world", title:"Brave New World", author:"Aldous Huxley", cover:C+"brave-new-world.jpg",
+      series:null, genre:"Science Fiction", format:"Not yet purchased",
+      pages:311, avgRating:4.0,
+      description:"In a future engineered for painless comfort, one man's exposure to the old world of feeling and suffering makes him a threat to the system's stability.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"dungeon-crawler-carl", title:"Dungeon Crawler Carl", author:"Matt Dinniman", cover:C+"dungeon-crawler-carl.jpg",
+      series:"Dungeon Crawler Carl, Book 1", genre:"Fantasy", format:"Not yet purchased",
+      pages:700, avgRating:4.6,
+      description:"Earth is demolished overnight and replaced with a deadly, gamified dungeon, and one very ordinary guy has to level up or die trying.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+    {
+      id:"piranesi", title:"Piranesi", author:"Susanna Clarke", cover:C+"piranesi.jpg",
+      series:null, genre:"Literary Fiction", format:"Not yet purchased",
+      pages:245, avgRating:4.3,
+      description:"A man living alone in an endless, tide-flooded House slowly realizes his own memory is the thing he should be most suspicious of.",
+      status:"tbr", progress:0, myRating:0, myReview:"", addedNote:"Marked most wanted"
+    },
+
+    /* ---- Recently finished ---- */
     {
       id:"mistborn", title:"Mistborn: The Final Empire", author:"Brandon Sanderson",
       cover:C+"mistborn-the-final-empire.jpg",
@@ -354,21 +420,12 @@
       addedNote:"Finished Aug 2025"
     },
     {
-      id:"circe", title:"Circe", author:"Madeline Miller",
-      cover:C+"circe.jpg",
-      series:null, genre:"Fantasy", format:"Mass market paperback, owned",
-      pages:393, avgRating:4.6,
-      description:"Banished to a lonely island for a power the gods fear, the witch Circe hones her craft, crosses paths with famous monsters and mortals, and slowly decides what kind of immortal she actually wants to be.",
-      status:"finished", progress:100, myRating:4, myReview:"Gorgeous prose, quieter than my usual picks but the back third really landed.",
-      addedNote:"Finished May 2025"
-    },
-    {
       id:"the-way-of-kings", title:"The Way of Kings", author:"Brandon Sanderson",
       cover:C+"the-way-of-kings.jpg",
       series:"The Stormlight Archive, Book 1", genre:"Fantasy", format:"Mass market paperback, owned",
       pages:1008, avgRating:4.8,
       description:"On the war-torn Shattered Plains, a slave with a shameful past, a scholar chasing forbidden truths, and a highprince questioning everything he's been taught converge as ancient, storm-born powers stir again.",
-      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2022"
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished 2023"
     },
     {
       id:"the-hobbit", title:"The Hobbit", author:"J. R. R. Tolkien",
@@ -376,7 +433,74 @@
       series:null, genre:"Classic", format:"Mass market paperback, owned",
       pages:320, avgRating:4.7,
       description:"A comfortable hobbit is talked into a quest for treasure guarded by a dragon, and comes home having outgrown every reasonable expectation he had for himself.",
-      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf for years"
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished years ago"
+    },
+    {
+      id:"six-of-crows", title:"Six of Crows", author:"Leigh Bardugo",
+      cover:C+"six-of-crows.jpg",
+      series:"Six of Crows, Book 1", genre:"Fantasy", format:"Mass market paperback, owned",
+      pages:465, avgRating:4.5,
+      description:"Six dangerous outcasts are offered a fortune to pull off a heist inside the most heavily fortified stronghold in the world. None of them expects to make it out alive — which is exactly why they're the only ones who might.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished Feb 2025"
+    },
+    {
+      id:"enders-game", title:"Ender's Game", author:"Orson Scott Card", cover:C+"ender-s-game.jpg",
+      series:"Ender's Saga, Book 1", genre:"Science Fiction", format:"Mass market paperback, owned",
+      pages:324, avgRating:4.3,
+      description:"A gifted child is recruited into a brutal training program to command Earth's fleet against an alien enemy, and has to decide how far he's willing to go to win.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished years ago"
+    },
+    {
+      id:"the-hunger-games", title:"The Hunger Games", author:"Suzanne Collins", cover:C+"the-hunger-games.jpg",
+      series:"The Hunger Games, Book 1", genre:"Science Fiction", format:"Mass market paperback, owned",
+      pages:384, avgRating:4.3,
+      description:"Each year, two children from every district are forced into a televised fight to the death, and one girl's volunteer act to save her sister turns her into a symbol the Capitol can't control.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished years ago"
+    },
+    {
+      id:"pride-and-prejudice", title:"Pride and Prejudice", author:"Jane Austen", cover:C+"pride-and-prejudice.jpg",
+      series:null, genre:"Classic", format:"Mass market paperback, owned",
+      pages:480, avgRating:4.3,
+      description:"Elizabeth Bennet spars her way through misjudged first impressions, family pressure, and one very proud, very rich Mr. Darcy on the way to figuring out what she actually wants.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished years ago"
+    },
+    {
+      id:"the-fellowship-of-the-ring", title:"The Fellowship of the Ring", author:"J. R. R. Tolkien", cover:C+"the-fellowship-of-the-ring.jpg",
+      series:"The Lord of the Rings, Book 1", genre:"Fantasy", format:"Mass market paperback, owned",
+      pages:423, avgRating:4.4,
+      description:"A hobbit and eight companions set out from the Shire to destroy a ring of absolute power before it falls into the hands of the enemy who forged it.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished years ago"
+    },
+    {
+      id:"elantris", title:"Elantris", author:"Brandon Sanderson", cover:C+"elantris.jpg",
+      series:null, genre:"Fantasy", format:"Mass market paperback, owned",
+      pages:492, avgRating:4.0,
+      description:"A cursed city of once-magical beings sits in ruin outside a kingdom's walls, and three people, unaware of each other, hold the pieces of what might undo the curse.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished 2024"
+    },
+    {
+      id:"warbreaker", title:"Warbreaker", author:"Brandon Sanderson", cover:C+"warbreaker.jpg",
+      series:null, genre:"Fantasy", format:"Mass market paperback, owned",
+      pages:592, avgRating:4.3,
+      description:"Two sisters are pulled into the political and magical machinations of a court built on Breath, color, and reanimated Lifeless soldiers.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished 2024"
+    },
+    {
+      id:"frankenstein", title:"Frankenstein", author:"Mary Shelley", cover:C+"frankenstein.jpg",
+      series:null, genre:"Classic", format:"Mass market paperback, owned",
+      pages:288, avgRating:3.9,
+      description:"A scientist's obsession with conquering death produces a being he immediately abandons, and the consequences of that abandonment consume them both.",
+      status:"finished", progress:100, myRating:0, myReview:"", addedNote:"Finished years ago"
+    },
+
+    /* ---- Owned, unread ---- */
+    {
+      id:"circe", title:"Circe", author:"Madeline Miller",
+      cover:C+"circe.jpg",
+      series:null, genre:"Fantasy", format:"Mass market paperback, owned",
+      pages:393, avgRating:4.6,
+      description:"Banished to a lonely island for a power the gods fear, the witch Circe hones her craft, crosses paths with famous monsters and mortals, and slowly decides what kind of immortal she actually wants to be.",
+      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2025"
     },
     {
       id:"life-of-pi", title:"Life of Pi", author:"Yann Martel",
@@ -395,6 +519,60 @@
       status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2020"
     },
     {
+      id:"eragon", title:"Eragon", author:"Christopher Paolini",
+      cover:C+"eragon.jpg",
+      series:"The Inheritance Cycle, Book 1", genre:"Fantasy", format:"Mass market paperback, owned",
+      pages:503, avgRating:4.2,
+      description:"A farm boy finds a dragon egg in the mountains and is pulled into a war against a tyrant king he's never met, one bonded-dragon lesson at a time.",
+      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2024"
+    },
+    {
+      id:"great-expectations", title:"Great Expectations", author:"Charles Dickens", cover:C+"great-expectations.jpg",
+      series:null, genre:"Classic", format:"Mass market paperback, owned",
+      pages:505, avgRating:3.8,
+      description:"An orphan's secret benefactor transforms his life, and he has to reckon with who he became chasing an idea of status that was built on a lie.",
+      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2021"
+    },
+    {
+      id:"divergent", title:"Divergent", author:"Veronica Roth", cover:C+"divergent.jpg",
+      series:"Divergent, Book 1", genre:"Science Fiction", format:"Mass market paperback, owned",
+      pages:487, avgRating:4.2,
+      description:"In a society split into factions by virtue, one girl's test results mark her as a threat to the entire system's order.",
+      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2022"
+    },
+    {
+      id:"harry-potter-1", title:"Harry Potter and the Sorcerer's Stone", author:"J. K. Rowling", cover:C+"harry-potter-and-the-sorcerer-s-stone.jpg",
+      series:"Harry Potter, Book 1", genre:"Fantasy", format:"Mass market paperback, owned",
+      pages:309, avgRating:4.7,
+      description:"An orphan raised in a cupboard discovers he's a wizard with a past that already made him famous, and starts to learn what that actually costs.",
+      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf for years"
+    },
+    {
+      id:"mans-search-for-meaning", title:"Man's Search for Meaning", author:"Viktor E. Frankl", cover:C+"man-s-search-for-meaning.jpg",
+      series:null, genre:"Non-fiction", format:"Mass market paperback, owned",
+      pages:200, avgRating:4.4,
+      description:"A psychiatrist's account of surviving the Holocaust becomes an argument that meaning, not comfort, is what gets people through unimaginable suffering.",
+      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2023"
+    },
+
+    /* ---- Want to buy ---- */
+    {
+      id:"the-name-of-the-wind", title:"The Name of the Wind", author:"Patrick Rothfuss",
+      cover:C+"the-name-of-the-wind.jpg",
+      series:"The Kingkiller Chronicle, Book 1", genre:"Fantasy", format:"Not yet purchased",
+      pages:662, avgRating:4.6,
+      description:"The story of Kvothe, told by the man himself: an orphaned actor's son who became the most notorious wizard his world has ever seen, recounted from a quiet inn where he's hiding from his own legend.",
+      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted Jan 2025"
+    },
+    {
+      id:"babel", title:"Babel", author:"R. F. Kuang",
+      cover:C+"babel.jpg",
+      series:null, genre:"Historical Fiction", format:"Not yet purchased",
+      pages:544, avgRating:4.5,
+      description:"An alternate 1830s Oxford where translation is the engine of empire, and a Chinese orphan raised to serve that engine has to decide whether he's a scholar of the institution — or a threat to it.",
+      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted Jun 2025"
+    },
+    {
       id:"jane-eyre", title:"Jane Eyre", author:"Charlotte Brontë",
       cover:C+"jane-eyre.jpg",
       series:null, genre:"Classic", format:"Not yet purchased",
@@ -403,21 +581,42 @@
       status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted Jul 2025"
     },
     {
-      id:"the-brothers-karamazov", title:"The Brothers Karamazov", author:"Fyodor Dostoevsky",
-      cover:C+"the-brothers-karamazov.jpg",
-      series:null, genre:"Classic", format:"Not yet purchased",
-      pages:824, avgRating:4.5,
-      description:"Three brothers, one murdered father, and a sprawling argument about faith, doubt, and free will disguised as a murder mystery.",
-      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted Sep 2025"
+      id:"dune", title:"Dune", author:"Frank Herbert", cover:C+"dune.jpg",
+      series:"Dune, Book 1", genre:"Science Fiction", format:"Not yet purchased",
+      pages:688, avgRating:4.3,
+      description:"On a desert planet that's the only source of the universe's most valuable substance, a young heir's exile turns into a religious and political uprising he never asked to lead.",
+      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted 2025"
     },
     {
-      id:"eragon", title:"Eragon", author:"Christopher Paolini",
-      cover:C+"eragon.jpg",
-      series:"The Inheritance Cycle, Book 1", genre:"Fantasy", format:"Mass market paperback, owned",
-      pages:503, avgRating:4.2,
-      description:"A farm boy finds a dragon egg in the mountains and is pulled into a war against a tyrant king he's never met, one bonded-dragon lesson at a time.",
-      status:"owned", progress:0, myRating:0, myReview:"", addedNote:"On shelf since 2024"
+      id:"1984", title:"1984", author:"George Orwell", cover:C+"1984.jpg",
+      series:null, genre:"Classic", format:"Not yet purchased",
+      pages:328, avgRating:4.2,
+      description:"A low-level bureaucrat in a totalitarian state begins to question the Party's control over truth itself, at a cost that reshapes everything he is.",
+      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted 2025"
     },
+    {
+      id:"american-gods", title:"American Gods", author:"Neil Gaiman", cover:C+"american-gods.jpg",
+      series:null, genre:"Fantasy", format:"Not yet purchased",
+      pages:465, avgRating:4.1,
+      description:"An ex-con is recruited by a mysterious grifter into a brewing war between the old gods, brought to America by belief, and the new gods of media and technology.",
+      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted 2025"
+    },
+    {
+      id:"the-great-gatsby", title:"The Great Gatsby", author:"F. Scott Fitzgerald", cover:C+"the-great-gatsby.jpg",
+      series:null, genre:"Classic", format:"Not yet purchased",
+      pages:180, avgRating:3.9,
+      description:"A mysterious millionaire's obsession with a married woman across the bay unravels the illusions of the Jazz Age one party at a time.",
+      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted 2025"
+    },
+    {
+      id:"gone-girl", title:"Gone Girl", author:"Gillian Flynn", cover:C+"gone-girl.jpg",
+      series:null, genre:"Thriller", format:"Not yet purchased",
+      pages:419, avgRating:4.1,
+      description:"On his wife's disappearance, a husband becomes the prime suspect in the media's eyes, as her diary reveals a marriage that was never what it looked like.",
+      status:"wishlist", progress:0, myRating:0, myReview:"", addedNote:"Wishlisted 2025"
+    },
+
+    /* ---- Borrowed ---- */
     {
       id:"tomorrow-x3", title:"Tomorrow, and Tomorrow, and Tomorrow", author:"Gabrielle Zevin",
       cover:C+"tomorrow-and-tomorrow-and-tomorrow.jpg",
@@ -438,10 +637,10 @@
 
   var SECONDARY_RECS = [
     {
-      title:"Piranesi", author:"Susanna Clarke", genre:"Literary Fiction",
-      cover:C+"piranesi.jpg",
-      description:"A man living alone in an endless, tide-flooded House slowly realizes his own memory is the thing he should be most suspicious of.",
-      why:"A slow-burn mystery with a narrator you'll want to protect — the puzzle-box structure you liked in Babel, in miniature."
+      title:"The Poppy War", author:"R. F. Kuang", genre:"Fantasy",
+      cover:C+"the-poppy-war.jpg",
+      description:"A war orphan's shot at an elite military academy uncovers a shamanic power tied to her country's bloodiest history — and a war about to test what she's willing to become.",
+      why:"Same author as Babel, which is already on your list — a grittier, faster read if you want more of her before the next release."
     },
     {
       title:"Legends & Lattes", author:"Travis Baldree", genre:"Fantasy",
@@ -517,8 +716,8 @@
       '<div class="screen">'+
         '<div class="hero">'+
           '<div>'+
-            '<h1>Your entire reading life, organized around you.</h1>'+
-            '<p>Every book you own, borrow, want, or are working through — one shelf, not six apps.</p>'+
+            '<span class="eyebrow hero-kicker">Your Library</span>'+
+            '<h1>Every book you own, borrow, want, or are reading — organized around you, not scattered across apps.</h1>'+
           '</div>'+
           '<div class="hero-stats">'+
             '<div class="stat"><b>'+total+'</b><span>In library</span></div>'+
